@@ -12,4 +12,4 @@ RUN docker-php-source extract && \
 
 COPY ./ /var/www/html/
 
-VOLUME /var/www/html
+VOLUME /var/www/html/

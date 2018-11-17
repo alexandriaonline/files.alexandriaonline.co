@@ -1,4 +1,7 @@
 {
+    "cloutier/php-ipfs-api": {
+        "version": "0.0.6"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
