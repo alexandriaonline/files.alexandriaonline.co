@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: docker/fpm/Dockerfile
+      args:
+        DEV: 'true'
     volumes:
       - ./:/var/www
   web:
