@@ -9,11 +9,15 @@ services:
     volumes:
       - ./:/var/www
   web:
+    ports:
+      - 8080:80
     build:
       context: .
       dockerfile: docker/nginx/Dockerfile
   db:
     image: mariadb:10.4
     restart: always
+    volumes:
+      - db-data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: sleepingForest
