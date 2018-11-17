@@ -1,0 +1,19 @@
+version: '3'
+volumes:
+  db-data:
+services:
+  fpm:
+    build:
+      context: .
+      dockerfile: docker/fpm/Dockerfile
+    volumes:
+      - ./:/var/www
+  web:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+  db:
+    image: mariadb:10.4
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: sleepingForest
