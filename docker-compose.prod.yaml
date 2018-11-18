@@ -13,7 +13,7 @@ services:
   fpm:
     build:
       context: .
-      dockerfile: docker/fpm/Dockerfile
+      dockerfile: docker/prod-fpm/Dockerfile
     volumes:
       - ./:/var/www/html
   web:
