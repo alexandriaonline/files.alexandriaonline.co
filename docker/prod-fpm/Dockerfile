@@ -13,6 +13,6 @@ RUN mv $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini
 
 COPY ./ /var/www/html/
 
-RUN mv /var/www/html/docker/files/php-uploads.ini $PHP_INI_DIR/conf.d/uploads.ini
+COPY ./docker/files/php-uploads.ini $PHP_INI_DIR/conf.d/uploads.ini
 
 VOLUME /var/www/html/
