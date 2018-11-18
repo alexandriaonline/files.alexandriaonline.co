@@ -7,6 +7,7 @@ use App\Entity\IpfsFileMetadata;
 use App\Entity\User;
 use App\Form\FileUploadForm;
 use App\Form\Type\FileUploadType;
+use App\Repository\IpfsFileRepository;
 use Cloutier\PhpIpfsApi\IPFS;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -45,29 +46,33 @@ class ApiController extends AbstractController
             /** @var User $user */
             $user = $this->getUser();
             $hash = $ipfs->add(file_get_contents($file->getRealPath()));
+            /** @var IpfsFileRepository $repo */
+            $repo = $em->getRepository(IpfsFile::class);
 
-            $ipfsMeta = new IpfsFileMetadata();
-            $ipfsMeta
-                ->setFileExt($file->guessExtension())
-                ->setFileMimetype($file->getMimeType())
-                ->setFileSize($file->getSize())
-                ->setFileName($file->getClientOriginalName())
-            ;
+            if (!$repo->fileExists($hash)) {
+                $ipfsFile = new IpfsFile();
+                $ipfsFile
+                    ->setSourceUser($user)
+                    ->setHash($hash)
+                ;
 
-            $em->persist($ipfsMeta);
+                $em->persist($ipfsFile);
 
-            $ipfsFile = new IpfsFile();
-            $ipfsFile
-                ->setSourceUser($user)
-                ->setHash($hash)
-                ->setIpfsFileMetadata($ipfsMeta)
-            ;
+                $ipfsMeta = new IpfsFileMetadata();
+                $ipfsMeta
+                    ->setFileExt($file->guessExtension())
+                    ->setFileMimetype($file->getMimeType())
+                    ->setFileSize($file->getSize())
+                    ->setFileName($file->getClientOriginalName())
+                    ->setIpfsFile($ipfsFile)
+                ;
 
-            $em->persist($ipfsFile);
+                $em->persist($ipfsMeta);
 
-            $user->addFile($ipfsFile);
+                $user->addFile($ipfsFile);
 
-            $em->flush();
+                $em->flush();
+            }
         }
 
         return new RedirectResponse($this->generateUrl('portal'));
