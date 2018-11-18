@@ -58,10 +58,13 @@ class IpfsFile
 
     /**
      * @param mixed $sourceUser
+     * @return IpfsFile
      */
-    public function setSourceUser($sourceUser): void
+    public function setSourceUser($sourceUser): self
     {
         $this->sourceUser = $sourceUser;
+
+        return $this;
     }
 
     /**
@@ -74,10 +77,14 @@ class IpfsFile
 
     /**
      * @param mixed $ipfsFileMetadata
+     * @return IpfsFile
      */
-    public function setIpfsFileMetadata($ipfsFileMetadata): void
+    public function setIpfsFileMetadata(IpfsFileMetadata $ipfsFileMetadata): self
     {
+        $ipfsFileMetadata->setIpfsFile($this);
         $this->ipfsFileMetadata = $ipfsFileMetadata;
+
+        return $this;
     }
 
 }
