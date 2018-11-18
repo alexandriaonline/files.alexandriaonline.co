@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d7164f7afb3e20f0250cdcc2b25f457b",
+    "content-hash": "eaba61d4732eb3348ae14494945c23f8",
     "packages": [
         {
             "name": "cloutier/php-ipfs-api",
