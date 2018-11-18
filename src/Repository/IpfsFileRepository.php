@@ -19,32 +19,13 @@ class IpfsFileRepository extends ServiceEntityRepository
         parent::__construct($registry, IpfsFile::class);
     }
 
-    // /**
-    //  * @return IpfsFile[] Returns an array of IpfsFile objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function fileExists($hash)
     {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('i.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        if ($this->findOneBy(['hash' => $hash]))
+        {
+            return true;
+        }
 
-    /*
-    public function findOneBySomeField($value): ?IpfsFile
-    {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return false;
     }
-    */
 }
