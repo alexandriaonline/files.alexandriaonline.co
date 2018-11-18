@@ -8,6 +8,9 @@
 // any CSS you require will output into a single css file (app.css in this case)
 require('../css/portal-page.css');
 
+
+// assetRows.item(0).insertAdjacentHTML('afterbegin', '<tr class="asset_row new_row"><td>Hello</td><td>World</td><td>Something</td></tr>');
+
 /*!
  * Start Bootstrap - SB Admin v5.0.2 (https://startbootstrap.com/template-overviews/sb-admin)
  * Copyright 2013-2018 Start Bootstrap

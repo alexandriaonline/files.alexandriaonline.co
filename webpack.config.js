@@ -28,7 +28,7 @@ Encore
         to: 'img/[path][name].[ext]',
 
         // only copy files matching this pattern
-        pattern: /\.(jpg|jpeg)$/
+        pattern: /\.(png|jpg|jpeg)$/
     })
 
     // will require an extra script tag for runtime.js

@@ -37,4 +37,21 @@ class MainController extends AbstractController
             'files' => $user->getFiles()
         ]);
     }
+
+//https://cloudflare-ipfs.com/ipfs/QmXA2rYCdnQHotYs7UKHkxbTdq5E7ZeZYzEUaCq5HfiYjS
+
+    /**
+     * @Route("/api_upload_action", name="upload")
+     * @Security("has_role('ROLE_USER')")
+     */
+    public function upload()
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+
+        $ipfsFiles = $user->getFiles();
+
+        print $ipfsFiles;
+    }
+
 }
