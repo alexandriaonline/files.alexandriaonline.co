@@ -16,4 +16,14 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+
+    /**
+     * @Route("/portal", name="portal")
+     */
+    public function portal()
+    {
+        return $this->render('main/portal.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
 }
