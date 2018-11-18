@@ -1,0 +1,32 @@
+version: '3'
+volumes:
+  db-data:
+  ipfs-staging:
+  ipfs-data:
+services:
+  fpm:
+    build:
+      context: .
+      dockerfile: docker/fpm/Dockerfile
+    volumes:
+      - ./:/var/www/html
+  web:
+    ports:
+      - 8080:80
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    volumes:
+      - ./:/var/www/html
+  db:
+    image: mariadb:10.4
+    restart: always
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: sleepingForest
+  ipfs:
+    image: ipfs/go-ipfs:latest
+    volumes:
+      - ipfs-staging:/export
+      - ipfs-data:/data/ipfs

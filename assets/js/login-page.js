@@ -6,9 +6,5 @@
  */
 
 // any CSS you require will output into a single css file (app.css in this case)
-require('../css/app.css');
-require('../scss/landing-page.scss');
-// Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
-var $ = require('jquery');
+require('../css/login-page.css');
 
-require('bootstrap');
