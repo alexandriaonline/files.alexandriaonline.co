@@ -3,7 +3,7 @@
 {% block title %}Hello {{ controller_name }}!{% endblock %}
 
 {% block body %}
-    Portal page
+    {{ form(UploadFileForm, { 'action': path('api_upload_action')}) }}
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>

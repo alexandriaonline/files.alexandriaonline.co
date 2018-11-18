@@ -22,6 +22,8 @@ services:
       - ./:/var/www/html
   db:
     image: mariadb:10.4
+    ports:
+      - 3306:3306
     restart: always
     volumes:
       - db-data:/var/lib/mysql
