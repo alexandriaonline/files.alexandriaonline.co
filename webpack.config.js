@@ -19,6 +19,7 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
     .addEntry('landing-page', './assets/js/landing-page.js')
+    .addEntry('login-page', './assets/js/login-page.js')
     .copyFiles({
         from: './assets/img',
 
