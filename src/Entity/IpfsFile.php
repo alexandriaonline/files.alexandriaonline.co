@@ -81,7 +81,6 @@ class IpfsFile
      */
     public function setIpfsFileMetadata(IpfsFileMetadata $ipfsFileMetadata): self
     {
-        $ipfsFileMetadata->setIpfsFile($this);
         $this->ipfsFileMetadata = $ipfsFileMetadata;
 
         return $this;
