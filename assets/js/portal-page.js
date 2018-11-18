@@ -8,18 +8,6 @@
 // any CSS you require will output into a single css file (app.css in this case)
 require('../css/portal-page.css');
 
-var fileTable = document.getElementById('dataTable');
-var newRow = fileTable.insertRow(1);
-var firstCell = newRow.insertCell(0);
-firstCell.innerHTML = 'John';
-var secondCell = newRow.insertCell(1);
-secondCell.innerHTML = 'Doe';
-var thirdCell = newRow.insertCell(2);
-thirdCell.innerHTML = 'Something';
-var fifthCell = newRow.insertCell(3);
-fifthCell.innerHTML = 'Something';
-var fourthCell = newRow.insertCell(4);
-fourthCell.innerHTML = 'Metadata';
 
 // assetRows.item(0).insertAdjacentHTML('afterbegin', '<tr class="asset_row new_row"><td>Hello</td><td>World</td><td>Something</td></tr>');
 
