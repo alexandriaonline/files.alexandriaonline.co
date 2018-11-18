@@ -8,6 +8,10 @@
 .idea/
 .vscode/
 
+# Alex had to add these
+var/
+vendor/
+
 # Eclipse
 .settings/
 .classpath

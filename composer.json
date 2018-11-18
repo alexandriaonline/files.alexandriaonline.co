@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "cloutier/php-ipfs-api": "dev-master",
+        "friendsofsymfony/user-bundle": "^2.1",
         "sensio/framework-extra-bundle": "^5.2",
         "symfony/asset": "4.1.*",
         "symfony/console": "4.1.*",
