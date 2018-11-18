@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\FileUploadForm;
 use App\Form\Type\FileUploadType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -27,10 +28,13 @@ class MainController extends AbstractController
     {
         $fileUpload = new FileUploadForm();
         $form = $this->createForm(FileUploadType::class, $fileUpload);
+        /** @var User $user */
+        $user = $this->getUser();
 
         return $this->render('main/portal.html.twig', [
             'controller_name' => 'MainController',
-            'UploadFileForm' => $form->createView()
+            'UploadFileForm' => $form->createView(),
+            'files' => $user->getFiles()
         ]);
     }
 

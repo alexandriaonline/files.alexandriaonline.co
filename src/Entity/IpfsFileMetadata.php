@@ -46,9 +46,9 @@ class IpfsFileMetadata
         return $this->id;
     }
 
-    public function getFileSize(): ?int
+    public function getfile_size(): ?float
     {
-        return $this->file_size;
+        return round($this->file_size/1000, 2);
     }
 
     public function setFileSize(int $file_size): self
@@ -58,7 +58,7 @@ class IpfsFileMetadata
         return $this;
     }
 
-    public function getFileName(): ?string
+    public function getfile_name(): ?string
     {
         return $this->file_name;
     }
@@ -70,7 +70,7 @@ class IpfsFileMetadata
         return $this;
     }
 
-    public function getFileMimetype(): ?string
+    public function getfile_mimetype(): ?string
     {
         return $this->file_mimetype;
     }
@@ -105,8 +105,9 @@ class IpfsFileMetadata
     /**
      * @param mixed $ipfsFile
      */
-    public function setIpfsFile($ipfsFile): void
+    public function setIpfsFile(IpfsFile $ipfsFile): void
     {
+        $ipfsFile->setIpfsFileMetadata($this);
         $this->ipfsFile = $ipfsFile;
     }
 
