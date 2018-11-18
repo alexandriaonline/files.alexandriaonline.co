@@ -6,6 +6,7 @@ use App\Form\FileUploadForm;
 use App\Form\Type\FileUploadType;
 use Cloutier\PhpIpfsApi\IPFS;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,6 +21,7 @@ class ApiController extends AbstractController
 {
     /**
      * @Route("/upload", name="api_upload_action")
+     * @Security("has_role('ROLE_USER')")
      * @param Request $request
      * @param IPFS $ipfs
      * @return Response
