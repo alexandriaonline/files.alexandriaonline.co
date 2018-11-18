@@ -4,6 +4,12 @@ volumes:
   ipfs-staging:
   ipfs-data:
 services:
+  build:
+    build:
+      context: .
+      dockerfile: docker/build/Dockerfile
+    volumes:
+    - ./:/var/www/html
   fpm:
     build:
       context: .
