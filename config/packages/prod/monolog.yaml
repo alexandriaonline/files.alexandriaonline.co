@@ -2,6 +2,7 @@ monolog:
     handlers:
         main:
             type: fingers_crossed
+            buffer_size: 30
             action_level: error
             handler: nested
             excluded_404s:

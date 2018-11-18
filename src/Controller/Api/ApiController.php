@@ -70,6 +70,6 @@ class ApiController extends AbstractController
             $em->flush();
         }
 
-        return new RedirectResponse($this->generateUrl('app_login'));
+        return new RedirectResponse($this->generateUrl('portal'));
     }
 }

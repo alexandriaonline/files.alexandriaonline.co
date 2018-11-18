@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Form\FileUploadForm;
+use App\Form\Type\FileUploadType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -23,8 +25,12 @@ class MainController extends AbstractController
      */
     public function portal()
     {
+        $fileUpload = new FileUploadForm();
+        $form = $this->createForm(FileUploadType::class, $fileUpload);
+
         return $this->render('main/portal.html.twig', [
             'controller_name' => 'MainController',
+            'UploadFileForm' => $form->createView()
         ]);
     }
 }
