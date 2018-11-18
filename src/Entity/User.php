@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -18,6 +19,20 @@ class User extends BaseUser
      * @ORM\Column(type="integer")
      */
     protected $id;
+
+    /**
+     * @var IpfsFile[]|ArrayCollection
+     * @ORM\OneToMany(targetEntity="App\Entity\IpfsFile", mappedBy="sourceUser")
+     */
+    private $files;
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->files = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -83,5 +98,18 @@ class User extends BaseUser
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function addFile(IpfsFile $ipfsFile): User
+    {
+        $ipfsFile->setSourceUser($this);
+        $this->files->add($ipfsFile);
+
+        return $this;
+    }
+
+    public function getFiles()
+    {
+        return $this->files->toArray();
     }
 }

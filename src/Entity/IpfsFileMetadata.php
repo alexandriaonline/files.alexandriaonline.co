@@ -37,8 +37,7 @@ class IpfsFileMetadata
     private $file_ext;
 
     /**
-     * @ORM\OneToOne(targetEntity="IpfsFile")
-     * @ORM\JoinColumn(name="ipfs_file_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="App\Entity\IpfsFile", inversedBy="ipfsFileMetadata")
      */
     private $ipfsFile;
 

@@ -22,14 +22,12 @@ class IpfsFile
     private $hash;
 
     /**
-     * @ORM\OneToOne(targetEntity="User")
-     * @ORM\JoinColumn(name="source_user_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="files")
      */
     private $sourceUser;
 
     /**
-     * @ORM\OneToOne(targetEntity="IpfsFileMetadata")
-     * @ORM\JoinColumn(name="ipfs_file_metadata_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="App\Entity\IpfsFileMetadata", mappedBy="ipfsFile")
      */
     private $ipfsFileMetadata;
 
